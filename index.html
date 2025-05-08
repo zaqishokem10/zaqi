@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deteksi Kerusakan Printer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Deteksi Kerusakan Printer</h1>
+    <form id="formDeteksi">
+      <label for="gejala">Pilih Gejala:</label>
+      <select id="gejala" name="gejala">
+        <option value="">-- Pilih Gejala --</option>
+        <option value="tidakMenyala">Printer tidak menyala</option>
+        <option value="hasilBuram">Hasil cetak buram</option>
+        <option value="macetKertas">Sering macet kertas</option>
+        <option value="lampuBlink">Lampu berkedip terus-menerus</option>
+        <option value="tintaTidakKeluar">Tinta tidak keluar</option>
+      </select>
+      <button type="button" onclick="tampilkanHasil()">Deteksi</button>
+    </form>
+    <div id="hasil" class="hasil"></div>
+  </div>
+
+  <script>
+    function tampilkanHasil() {
+      const gejala = document.getElementById("gejala").value;
+      const hasilDiv = document.getElementById("hasil");
+
+      let hasil = "";
+
+      switch (gejala) {
+        case "tidakMenyala":
+          hasil = "<strong>Kerusakan:</strong> Power supply bermasalah<br><strong>Solusi:</strong> Periksa kabel dan adaptor.";
+          break;
+        case "hasilBuram":
+          hasil = "<strong>Kerusakan:</strong> Head printer kotor<br><strong>Solusi:</strong> Bersihkan head printer.";
+          break;
+        case "macetKertas":
+          hasil = "<strong>Kerusakan:</strong> Roller penarik kertas aus<br><strong>Solusi:</strong> Ganti atau bersihkan roller.";
+          break;
+        case "lampuBlink":
+          hasil = "<strong>Kerusakan:</strong> Error internal / ink absorber penuh<br><strong>Solusi:</strong> Reset printer atau bawa ke servis.";
+          break;
+        case "tintaTidakKeluar":
+          hasil = "<strong>Kerusakan:</strong> Tinta habis atau head tersumbat<br><strong>Solusi:</strong> Isi ulang tinta dan lakukan cleaning.";
+          break;
+        default:
+          hasil = "Silakan pilih gejala terlebih dahulu.";
+      }
+
+      hasilDiv.innerHTML = hasil;
+    }
+  </script>
+</body>
+</html>
